@@ -18,6 +18,9 @@
     <!-- Leaflet Providers -->
     <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
 
+    <!-- Leaflet Omnivore -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
+
     <!-- eigene Stile -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&family=Roboto:wght@300&display=swap');
@@ -125,6 +128,9 @@
 
         }
         //loadGeoJSON(<URL>);
+
+        // Landkreise Deutschland hinzufügen
+        omnivore.topojson("landkreise.topojson").addTo(map);
 
     </script>
 </body>

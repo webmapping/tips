@@ -122,7 +122,15 @@
         async function loadGeoJSON(url) {
             let response = await fetch(url);
             let geojson = await response.json();
-            L.geoJSON(geojson).addTo(map);
+            L.geoJSON(geojson, {
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(`
+                        <h4>${feature.properties["Incident Date"]}: ${feature.properties["Cause of Death"]}</h4>
+                        <p>${feature.properties["Total Number of Dead and Missing"]} dead or missing. ${feature.properties["Location of death"]}</p>
+                        <p><a href="https://missingmigrants.iom.int/migrant-incident-report?main_id=${feature.properties["Main ID"]}" target="iom">Weblink</a></p>
+                    `)
+                }
+            }).addTo(map);
         }
         loadGeoJSON("2024.geojson");
 

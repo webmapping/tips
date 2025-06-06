@@ -122,9 +122,9 @@
         async function loadGeoJSON(url) {
             let response = await fetch(url);
             let geojson = await response.json();
-
+            L.geoJSON(geojson).addTo(map);
         }
-        //loadGeoJSON(<URL>);
+        loadGeoJSON("2024.geojson");
 
     </script>
 </body>
